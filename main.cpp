@@ -7,6 +7,8 @@ using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
 
+static int timePeriodTracker = 0;
+
 string randomName(ifstream& inputFile);
 
 // Function Prototypes
@@ -227,6 +229,7 @@ public:
         // Finally return that name
         return traversal->name;
     }
+
     // Adding a Size Function so that i can properly add my randomCustomerLeaving function
     int getSizeOfList()
     {
@@ -308,7 +311,24 @@ void randomCustomerLeaving(DoublyLinkedList& coffeeLine)
     if (prob <= 10)
     {
         int randomNodeIndex = rand() % coffeeLine.getSizeOfList + 1; // had to create a getSizeOfList function
-        string customerLeft = // Had to create a return name at position function
+        string customerLeft = coffeeLine.getNameAtNodePosition(randomNodeIndex);// Had to create a return name at position function
+
+        // announce that the random left the line
+        cout << customerLeft << " was a random customer that left the line." << endl;
+        coffeeLine.delete_pos(randomNodeIndex); // delete the node/customer at that position
+    }
+}
+
+void VIPSkipLine(DoublyLinkedList& coffeeLine, vector<string> nameList)
+{
+    int prob = rand() % 100 + 1; // create probability
+    if (prob <= 10) // check 10%
+    { 
+        int randomNameIndex = rand() % nameList.size(); // create our random index to choose name in vector
+        string customerName = nameList.at(randomNameIndex); // set customerName equal to new VIP's name
+
+        cout << customerName << " (VIP) has joined the front of the line and has ordered" << endl;
+        coffeeLine.push_front(customerName);
     }
 }
 
@@ -344,6 +364,8 @@ int main() {
     }
 
     nameList.close() // close file stream
+
+    DoublyLinkedList coffeeLine;
     
     return 0;
 }
