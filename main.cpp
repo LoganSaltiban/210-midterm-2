@@ -28,6 +28,16 @@ private:
     Node* tail;
 
 public:
+
+    Node* getHead()
+    {
+        return head;
+    }
+
+    Node* getTail()
+    {
+        return tail;
+    }
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
 
     void insert_after(string inputName, int position) {
@@ -273,7 +283,7 @@ void frontCustomerHelped(DoublyLinkedList& coffeeLine)
     // check if probabability is 40%
     if (prob <= 40)
     {
-        cout << coffeeLine->head->name << " is served." << endl; // announce served
+        cout << coffeeLine.getHead()->name << " is served." << endl; // announce served
         coffeeLine.pop_front(); // remove front node
     }
 }
@@ -310,7 +320,7 @@ void backCustomerLeaving(DoublyLinkedList& coffeeLine)
 
     if (prob <= 20) // check 20% chance
     {
-        cout << coffeeLine->tail->name << " has left the line." << endl; // tell user tail node left line
+        cout << coffeeLine.getTail()->name << " has left the line." << endl; // tell user tail node left line
         coffeeLine.pop_back(); // delete tail node
     }
 }
@@ -393,7 +403,7 @@ int main() {
     // Call our 20 time periods
     for (int i = 0; i < 20; i++)
     {
-        timePeriod(coffeeLine);
+        timePeriod(coffeeLine, nameListVector);
     }
     
     return 0;
