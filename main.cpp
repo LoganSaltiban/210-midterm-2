@@ -9,6 +9,13 @@ const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
 
 string randomName(ifstream& inputFile);
 
+// Function Prototypes
+void frontCustomerHelped(coffeeLine);
+void newCustomerJoined(coffeeLine, nameList);
+void backCustomerLeaving(coffeeLine);
+void randomCustomerLeaving(coffeeLine);
+void  VIPSkipLine(coffeeLine);
+
 class DoublyLinkedList {
 private:
     struct Node {
@@ -213,6 +220,9 @@ void timePeriod(DoublyLinkedList& coffeeLine, vector<string> nameList)
 {
     frontCustomerHelped(coffeeLine);
     newCustomerJoined(coffeeLine, nameList);
+    backCustomerLeaving(coffeeLine);
+    randomCustomerLeaving(coffeeLine);
+    VIPSkipLine(coffeeLine);
 }
 
 int main() {
