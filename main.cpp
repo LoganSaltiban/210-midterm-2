@@ -7,7 +7,7 @@ using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
 
-static int timePeriodTracker = 0;
+int timePeriodTracker = 0;
 
 string randomName(ifstream& inputFile);
 
@@ -291,6 +291,17 @@ void newCustomerJoined(DoublyLinkedList& coffeeLine, vector<string> nameList)
         coffeeLine.push_back(tempCustomer);
     }
 }
+// Just copied newCustomerJoined and took off the probability aspect
+void newCustomerJoinedGarunteed(DoublyLinkedList& coffeeLine, vector<string> nameList)
+{
+        int index = rand() % nameList.size(); // create a random index to use for name
+        string tempCustomer = nameList.at(index); // use temp customer to load pop_front()
+
+        cout << tempCustomer << " has joined the line." << endl; // announce new customer joined
+
+        // Now we add new customer to the end of the line
+        coffeeLine.push_back(tempCustomer);
+}
 
 void backCustomerLeaving(DoublyLinkedList& coffeeLine)
 {
@@ -334,6 +345,11 @@ void VIPSkipLine(DoublyLinkedList& coffeeLine, vector<string> nameList)
 
 void timePeriod(DoublyLinkedList& coffeeLine, vector<string> nameList)
 {
+    // Check if time period tracker is our first time period | if so, add 5 customers
+    if (timePeriodTracker == 0)
+    {
+        
+    }
     frontCustomerHelped(coffeeLine);
     newCustomerJoined(coffeeLine, nameList);
     backCustomerLeaving(coffeeLine);
@@ -366,6 +382,8 @@ int main() {
     nameList.close() // close file stream
 
     DoublyLinkedList coffeeLine;
+
+    // Start our instance with 5 customers in line.
     
     return 0;
 }
