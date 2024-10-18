@@ -348,8 +348,14 @@ void timePeriod(DoublyLinkedList& coffeeLine, vector<string> nameList)
     // Check if time period tracker is our first time period | if so, add 5 customers
     if (timePeriodTracker == 0)
     {
-        
+        for (int i = 0; i < 5; i++)
+        {
+            newCustomerJoinedGarunteed(coffeeLine, nameList);
+        }
+        // Finally increment timeperiodtracker so this doesnt happen again
+        timePeriodTracker++;
     }
+    // Call our functions
     frontCustomerHelped(coffeeLine);
     newCustomerJoined(coffeeLine, nameList);
     backCustomerLeaving(coffeeLine);
