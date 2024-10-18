@@ -216,6 +216,22 @@ public:
     }
 };
 
+void frontCustomerHelped(DoublyLinkedList& coffeeLine)
+{
+    int prob = rand() % 100 + 1; // create our random generator thanks for the tip ;)
+    // check if probabability is 40%
+    if (prob <= 40)
+    {
+        cout << coffeeLine->head->name << " is served." << endl; // announce served
+        coffeeLine.pop_front(); // remove front node
+    }
+}
+
+void newCustomerJoined(DoublyLinkedList& coffeeLine, vector<string> nameList)
+{
+    int prob = rand() % 100 + 1; // random number
+}
+
 void timePeriod(DoublyLinkedList& coffeeLine, vector<string> nameList)
 {
     frontCustomerHelped(coffeeLine);
