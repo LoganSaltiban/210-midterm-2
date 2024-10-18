@@ -202,6 +202,26 @@ public:
         cout << endl;
     }
 
+    // Adding a Size Function so that i can properly add my randomCustomerLeaving function
+    int getSizeOfList()
+    {
+        // Create temp traversal pointer and point to head
+        Node* tempNode = head;
+        int sizeOfList = 0; // store the number of times while loop travels
+
+        // test case if list is empty
+        if (!head)
+        {
+            return 0;
+        }
+
+        while (tempNode)
+        {
+            sizeOfList++; // increase sizeOfList
+            
+        }
+    }
+
     void print_reverse() {
         Node* current = tail;
         if (!current) { 
@@ -238,17 +258,29 @@ void newCustomerJoined(DoublyLinkedList& coffeeLine, vector<string> nameList)
         cout << tempCustomer << " has joined the line." << endl; // announce new customer joined
 
         // Now we add new customer to the end of the line
-        coffeeLine.pop_back(tempCustomer);
+        coffeeLine.push_back(tempCustomer);
     }
 }
 
 void backCustomerLeaving(DoublyLinkedList& coffeeLine)
 {
-    int prob = rand() % 100 + 1;
-    
+    int prob = rand() % 100 + 1; // create our random number
+
+    if (prob <= 20) // check 20% chance
+    {
+        cout << coffeeLine->tail->name << " has left the line." << endl; // tell user tail node left line
+        coffeeLine.pop_back(); // delete tail node
+    }
+}
+
+void randomCustomerLeaving(DoublyLinkedList& coffeeLine)
+{
+    int prob = rand() % 100 + 1; // create our random number
+
+    // Check if probability is 10%
     if (prob <= 10)
     {
-
+        int randomNodeIndex = rand() % coffeeLine
     }
 }
 
