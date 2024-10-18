@@ -209,10 +209,10 @@ public:
     }
 };
 
-string randomName(ifstream& inputFile)
+void timePeriod(DoublyLinkedList& coffeeLine, vector<string> nameList)
 {
-    ifstream nameList(inputFile); // create list
-
+    frontCustomerHelped(coffeeLine);
+    newCustomerJoined(coffeeLine, nameList);
 }
 
 int main() {
@@ -236,6 +236,8 @@ int main() {
     {
         nameListVector.push_back(traversalName);
     }
+
+    nameList.close() // close file stream
     
     return 0;
 }
