@@ -10,11 +10,11 @@ const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
 class DoublyLinkedList {
 private:
     struct Node {
-        int data;
+        string name;
         Node* prev;
         Node* next;
-        Node(int val, Node* p = nullptr, Node* n = nullptr) {
-            data = val; 
+        Node(string inputName, Node* p = nullptr, Node* n = nullptr) {
+            name = inputName; 
             prev = p;
             next = n;
         }
@@ -26,13 +26,13 @@ private:
 public:
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
 
-    void insert_after(int value, int position) {
+    void insert_after(string inputName, int position) {
         if (position < 0) {
             cout << "Position must be >= 0." << endl;
             return;
         }
 
-        Node* newNode = new Node(value);
+        Node* newNode = new Node(inputName);
         if (!head) {
             head = tail = newNode;
             return;
@@ -57,12 +57,12 @@ public:
         temp->next = newNode;
     }
 
-    void delete_val(int value) {
+    void delete_val(string inputName) {
         if (!head) return;
 
         Node* temp = head;
         
-        while (temp && temp->data != value)
+        while (temp && temp->name != inputName)
             temp = temp->next;
 
         if (!temp) return; 
@@ -117,8 +117,8 @@ public:
         delete temp;
     }
 
-    void push_back(int v) {
-        Node* newNode = new Node(v);
+    void push_back(string inputName) {
+        Node* newNode = new Node(inputName);
         if (!tail)
             head = tail = newNode;
         else {
@@ -128,8 +128,8 @@ public:
         }
     }
     
-    void push_front(int v) {
-        Node* newNode = new Node(v);
+    void push_front(string inputName) {
+        Node* newNode = new Node(inputName);
         if (!head)
             head = tail = newNode;
         else {
@@ -187,7 +187,7 @@ public:
             return;
         }
         while (current) {
-            cout << current->data << " ";
+            cout << current->name << " ";
             current = current->next;
         }
         cout << endl;
@@ -200,7 +200,7 @@ public:
             return;
         }
         while (current) {
-            cout << current->data << " ";
+            cout << current->name << " ";
             current = current->prev;
         }
         cout << endl;
