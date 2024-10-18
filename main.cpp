@@ -7,6 +7,8 @@ using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
 
+string randomName(ifstream& inputFile);
+
 class DoublyLinkedList {
 private:
     struct Node {
@@ -207,11 +209,33 @@ public:
     }
 };
 
+string randomName(ifstream& inputFile)
+{
+    ifstream nameList(inputFile); // create list
+
+}
+
 int main() {
     // Create our random seed using time
     srand(time(0));
     
+    ifstream nameList("names.txt"); // create our nameList to read from
 
+    // Check input file 
+    if (!nameList.is_open())
+    {
+        cout << "Error accessing the name list.";
+        return 0;
+    }
+    
+    // Create a vector to store all our names then close file
+    vector<string> nameListVector;
+    string traversalName;
+
+    while (getline(nameList, traversalName))
+    {
+        nameListVector.push_back(traversalName);
+    }
     
     return 0;
 }
