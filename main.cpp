@@ -17,6 +17,7 @@ void newCustomerJoined(coffeeLine, nameList);
 void backCustomerLeaving(coffeeLine);
 void randomCustomerLeaving(coffeeLine);
 void  VIPSkipLine(coffeeLine);
+void newCustomerJoinedGarunteed(DoublyLinkedList& coffeeLine, vector<string> nameList);
 
 class DoublyLinkedList {
 private:
