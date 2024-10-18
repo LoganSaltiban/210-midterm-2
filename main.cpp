@@ -230,6 +230,26 @@ void frontCustomerHelped(DoublyLinkedList& coffeeLine)
 void newCustomerJoined(DoublyLinkedList& coffeeLine, vector<string> nameList)
 {
     int prob = rand() % 100 + 1; // random number
+    if (prob <= 60) // Check 60% chance of new customer joining
+    {
+        int index = rand() % nameList.size(); // create a random index to use for name
+        string tempCustomer = nameList.at(index); // use temp customer to load pop_front()
+
+        cout << tempCustomer << " has joined the line." << endl; // announce new customer joined
+
+        // Now we add new customer to the end of the line
+        coffeeLine.pop_back(tempCustomer);
+    }
+}
+
+void backCustomerLeaving(DoublyLinkedList& coffeeLine)
+{
+    int prob = rand() % 100 + 1;
+    
+    if (prob <= 10)
+    {
+
+    }
 }
 
 void timePeriod(DoublyLinkedList& coffeeLine, vector<string> nameList)
