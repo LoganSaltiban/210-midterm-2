@@ -202,6 +202,31 @@ public:
         cout << endl;
     }
 
+    // Adding a get node name at position function to ensure that randomcustomerleaving works right
+    string getNameAtNodePosition(int position)
+    {
+        if (!head)
+        {
+            cout << "List is empty" << endl; // test case if head is empty
+            return;
+        }
+
+        Node* traversal = head; // set traversal ptr to head
+
+        for (int i = 1; i < position; ++i)
+        {
+            if (!traversal) // check to see if the position is too far in list
+            {
+                cout << "Position is not valid" << endl;
+                return;
+            }
+
+            // Set traversal to next node
+            traversal = traversal->next;
+        }
+        // Finally return that name
+        return traversal->name;
+    }
     // Adding a Size Function so that i can properly add my randomCustomerLeaving function
     int getSizeOfList()
     {
@@ -218,8 +243,10 @@ public:
         while (tempNode)
         {
             sizeOfList++; // increase sizeOfList
-            
+            tempNode = tempNode->next;
         }
+
+        return sizeOfList; // return the correct size of list
     }
 
     void print_reverse() {
@@ -280,7 +307,8 @@ void randomCustomerLeaving(DoublyLinkedList& coffeeLine)
     // Check if probability is 10%
     if (prob <= 10)
     {
-        int randomNodeIndex = rand() % coffeeLine
+        int randomNodeIndex = rand() % coffeeLine.getSizeOfList + 1; // had to create a getSizeOfList function
+        string customerLeft = // Had to create a return name at position function
     }
 }
 
