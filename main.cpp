@@ -11,14 +11,6 @@ int timePeriodTracker = 0;
 
 string randomName(ifstream& inputFile);
 
-// Function Prototypes
-void frontCustomerHelped(coffeeLine);
-void newCustomerJoined(coffeeLine, nameList);
-void backCustomerLeaving(coffeeLine);
-void randomCustomerLeaving(coffeeLine);
-void  VIPSkipLine(coffeeLine);
-void newCustomerJoinedGarunteed(DoublyLinkedList& coffeeLine, vector<string> nameList);
-
 class DoublyLinkedList {
 private:
     struct Node {
@@ -211,7 +203,7 @@ public:
         if (!head)
         {
             cout << "List is empty" << endl; // test case if head is empty
-            return;
+            return "";
         }
 
         Node* traversal = head; // set traversal ptr to head
@@ -221,7 +213,7 @@ public:
             if (!traversal) // check to see if the position is too far in list
             {
                 cout << "Position is not valid" << endl;
-                return;
+                return "";
             }
 
             // Set traversal to next node
@@ -267,7 +259,15 @@ public:
     }
 };
 
+// Function Prototypes
+void frontCustomerHelped(DoublyLinkedList& coffeeLine);
+void newCustomerJoined(DoublyLinkedList& coffeeLine, vector<string> nameList);
+void backCustomerLeaving(DoublyLinkedList& coffeeLine);
+void randomCustomerLeaving(DoublyLinkedList& coffeeLine);
+void  VIPSkipLine(DoublyLinkedList& coffeeLine);
+void newCustomerJoinedGarunteed(DoublyLinkedList& coffeeLine, vector<string> nameList);
 void frontCustomerHelped(DoublyLinkedList& coffeeLine)
+
 {
     int prob = rand() % 100 + 1; // create our random generator thanks for the tip ;)
     // check if probabability is 40%
@@ -322,7 +322,7 @@ void randomCustomerLeaving(DoublyLinkedList& coffeeLine)
     // Check if probability is 10%
     if (prob <= 10)
     {
-        int randomNodeIndex = rand() % coffeeLine.getSizeOfList + 1; // had to create a getSizeOfList function
+        int randomNodeIndex = rand() % coffeeLine.getSizeOfList() + 1; // had to create a getSizeOfList function
         string customerLeft = coffeeLine.getNameAtNodePosition(randomNodeIndex);// Had to create a return name at position function
 
         // announce that the random left the line
@@ -386,11 +386,15 @@ int main() {
         nameListVector.push_back(traversalName);
     }
 
-    nameList.close() // close file stream
+    nameList.close(); // close file stream
 
     DoublyLinkedList coffeeLine;
 
-    // Start our instance with 5 customers in line.
+    // Call our 20 time periods
+    for (int i = 0; i < 20; i++)
+    {
+        timePeriod(coffeeLine);
+    }
     
     return 0;
 }
